@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Mint & Cream 팔레트 -->
+    <color name="cream">#FFFDF7</color>
+    <color name="mint">#4ECDC4</color>
+    <color name="mint_dark">#2BB3AA</color>
+    <color name="ink">#3A3A3A</color>
+    <color name="ic_launcher_background">#4ECDC4</color>
+</resources>

@@ -1,0 +1,51 @@
+# iOS 빌드 CI (macOS 러너). Windows 에선 iOS 빌드가 불가하므로 여기서 검증한다.
+#
+# 전제: 이 저장소의 '루트'가 Posty 프로젝트(gradlew, settings.gradle.kts, iosApp/ 이 루트에 있음).
+#   - Posty 가 하위 폴더라면: 이 파일을 실제 repo 루트의 .github/workflows/ 로 옮기고
+#     아래 working-directory 들을 'Posty', 'Posty/iosApp' 처럼 맞춰 주세요.
+name: iOS Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ios:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # 1) Kotlin/Compose iOS 프레임워크가 네이티브로 컴파일·링크되는지(핵심 검증).
+      - name: Link Kotlin iOS framework
+        run: ./gradlew :shared:linkDebugFrameworkIosSimulatorArm64 --no-daemon --stacktrace
+
+      # 2) Swift 앱까지 시뮬레이터용으로 실제 빌드.
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: iosApp
+        run: xcodegen generate
+
+      - name: Build iOS app (simulator)
+        working-directory: iosApp
+        run: |
+          xcodebuild \
+            -project iosApp.xcodeproj \
+            -scheme iosApp \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build

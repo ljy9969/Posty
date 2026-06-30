@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 실제 Compose UI 색은 ui/theme/Theme.kt 에서 결정. 여기 XML 테마는
+         윈도우 배경 / 상태바 등 시스템 chrome 만 담당. -->
+    <style name="Theme.Posty" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/cream</item>
+        <item name="android:statusBarColor">@color/cream</item>
+        <item name="android:navigationBarColor">@color/cream</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <!-- Splash (androidx core-splashscreen). 앱 진입 시 민트 배경 + 런처 아이콘. -->
+    <style name="Theme.Posty.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/cream</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Posty</item>
+    </style>
+
+</resources>

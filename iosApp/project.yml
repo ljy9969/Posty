@@ -1,0 +1,40 @@
+# XcodeGen 프로젝트 정의 — `xcodegen generate` 로 iosApp.xcodeproj 생성.
+# (pbxproj 를 손으로 관리하지 않기 위해 사용. 설치: brew install xcodegen)
+name: iosApp
+options:
+  bundleIdPrefix: com.bimatrix
+  deploymentTarget:
+    iOS: "15.0"
+targets:
+  iosApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: iosApp
+    info:
+      path: iosApp/Info.plist
+      properties:
+        CFBundleDisplayName: Posty
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.bimatrix.posty
+        SWIFT_VERSION: "5.0"
+        # KMP 프레임워크가 복사되는 위치(embedAndSignAppleFrameworkForXcode 출력).
+        FRAMEWORK_SEARCH_PATHS:
+          - $(inherited)
+          - $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
+        OTHER_LDFLAGS:
+          - $(inherited)
+          - -framework
+          - Shared
+    preBuildScripts:
+      - name: Compile & embed Kotlin (Compose) framework
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT/.."
+          ./gradlew :shared:embedAndSignAppleFrameworkForXcode

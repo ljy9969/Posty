@@ -1,0 +1,26 @@
+# ── Gradle / Android ───────────────────────────────
+.gradle/
+build/
+**/build/
+local.properties
+*.apk
+*.aab
+/captures
+.externalNativeBuild
+.cxx
+.kotlin/
+
+# ── IDE ────────────────────────────────────────────
+*.iml
+.idea/
+
+# ── Xcode / iOS ────────────────────────────────────
+# iosApp.xcodeproj 는 XcodeGen(project.yml)으로 생성 — 커밋하지 않음
+iosApp/iosApp.xcodeproj/
+iosApp/iosApp/Info.plist
+**/xcuserdata/
+**/DerivedData/
+.DS_Store
+
+# ── 기타 ───────────────────────────────────────────
+*.log
