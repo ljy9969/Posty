@@ -37,6 +37,12 @@
                 android:resource="@xml/posty_widget_info" />
         </receiver>
 
+        <!-- 위젯 리스트(여러 장) 데이터 공급 서비스. -->
+        <service
+            android:name=".widget.PostyWidgetService"
+            android:permission="android.permission.BIND_REMOTE_VIEWS"
+            android:exported="false" />
+
         <!-- 마감 알림 발화 리시버. -->
         <receiver
             android:name=".reminder.ReminderReceiver"

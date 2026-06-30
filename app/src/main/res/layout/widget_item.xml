@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_item_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <!-- 스티키 색 막대(colorIndex 에 따라 배경색 지정) -->
+    <View
+        android:id="@+id/widget_item_dot"
+        android:layout_width="5dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="#C7F0DB" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/widget_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#3A3A3A"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/widget_item_due"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#2BB3AA"
+            android:textSize="11sp"
+            android:text="" />
+    </LinearLayout>
+
+</LinearLayout>
