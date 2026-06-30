@@ -42,11 +42,13 @@ jobs:
       - name: Build iOS app (simulator)
         working-directory: iosApp
         run: |
+          # CMP 1.11.1 은 iosSimulatorArm64 만 발행(인텔 x86_64 시뮬 없음) → arm64 로 한정.
           xcodebuild \
             -project iosApp.xcodeproj \
             -scheme iosApp \
             -sdk iphonesimulator \
             -configuration Debug \
             -destination 'generic/platform=iOS Simulator' \
+            ARCHS=arm64 ONLY_ACTIVE_ARCH=NO \
             CODE_SIGNING_ALLOWED=NO \
             build
