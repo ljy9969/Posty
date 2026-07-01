@@ -105,9 +105,10 @@ fun BoardScreen(
     onToggleMode: () -> Unit,
     onAdd: () -> Unit,
     onOpenCompleted: () -> Unit,
+    // 마감순 정렬 토글(라인 펼침 모드 전용, 표시용 임시 정렬). 상위에서 보유해 화면 이동에도 유지.
+    sortByDue: Boolean,
+    onSortByDueChange: (Boolean) -> Unit,
 ) {
-    // 마감순 정렬 토글(라인 펼침 모드 전용, 표시용 임시 정렬). 끄면 사용자 배치 순서로 복원.
-    var sortByDue by remember { mutableStateOf(false) }
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize()) {
             BoardHeader(
@@ -174,7 +175,7 @@ fun BoardScreen(
                     )
                     DueSortButton(
                         active = sortByDue,
-                        onClick = { sortByDue = !sortByDue },
+                        onClick = { onSortByDueChange(!sortByDue) },
                     )
                     AddPillButton(onClick = onAdd)
                 }

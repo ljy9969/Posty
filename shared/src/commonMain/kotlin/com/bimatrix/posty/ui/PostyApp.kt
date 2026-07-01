@@ -81,6 +81,8 @@ private fun PostyApp(vm: PostyViewModel) {
     val lineZoom by vm.lineZoom.collectAsState()
     val freeZoom by vm.freeZoom.collectAsState()
     var screen by remember { mutableStateOf<Screen>(Screen.Board) }
+    // 라인 마감순 토글 — 여기(앱 루트)서 보유해 편집/완료 화면을 다녀와도 앱 실행 중 유지.
+    var sortByDue by remember { mutableStateOf(false) }
 
     // 시스템 뒤로가기(스와이프) — 보드가 아닌 화면에서는 앱을 닫지 않고 보드로 돌아간다.
     // (완료한 일 → 오늘의 보드, 카드 편집 → 오늘의 보드)
@@ -130,6 +132,8 @@ private fun PostyApp(vm: PostyViewModel) {
                 onToggleMode = { vm.setFreeMode(!freeMode) },
                 onAdd = { screen = Screen.Edit(null) },
                 onOpenCompleted = { screen = Screen.Completed },
+                sortByDue = sortByDue,
+                onSortByDueChange = { sortByDue = it },
             )
 
             is Screen.Completed -> CompletedScreen(
