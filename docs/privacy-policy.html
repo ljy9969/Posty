@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Posty 개인정보처리방침</title>
+<meta name="description" content="Posty 앱 개인정보처리방침 — 어떤 개인정보도 수집하지 않고 모든 데이터를 기기에만 저장합니다." />
+<style>
+  :root {
+    --cream: #FBF8F0;
+    --card: #FFFFFF;
+    --mint: #B7E4C7;
+    --mint-dark: #4FA98A;
+    --ink: #2E3A34;
+    --ink-soft: #6A7A72;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+                 "Noto Sans KR", "Malgun Gothic", Roboto, sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 22px 80px; }
+  header {
+    text-align: center;
+    padding: 34px 22px;
+    background: var(--mint);
+    border-radius: 22px;
+    margin-bottom: 30px;
+  }
+  header .logo {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  header h1 { margin: 8px 0 4px; font-size: 20px; font-weight: 700; color: var(--ink); }
+  header .updated { margin: 0; font-size: 13px; color: #35604f; }
+  .summary {
+    background: var(--card);
+    border: 2px solid var(--mint);
+    border-radius: 18px;
+    padding: 20px 22px;
+    margin-bottom: 26px;
+  }
+  .summary strong { color: var(--mint-dark); }
+  section { margin-bottom: 26px; }
+  h2 {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    padding-left: 12px;
+    border-left: 4px solid var(--mint-dark);
+  }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  .muted { color: var(--ink-soft); font-size: 14px; }
+  code {
+    background: #EEF6F1;
+    color: #35604f;
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  a { color: var(--mint-dark); }
+  footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #E4E9E6;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .en { margin-top: 48px; }
+  .en h2, .en h1 { }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="logo">Posty</span>
+      <h1>개인정보처리방침</h1>
+      <p class="updated">최종 업데이트: 2026년 7월 3일</p>
+    </header>
+
+    <div class="summary">
+      <p style="margin-top:0"><strong>한 줄 요약 —</strong> Posty는 이용자의 <strong>어떠한 개인정보도 수집·전송하지 않습니다.</strong>
+      할 일 등 모든 데이터는 오직 <strong>이용자의 기기 안에만</strong> 저장되며, 외부 서버로 전송되지 않습니다.
+      앱에는 인터넷 접속 권한 자체가 없습니다.</p>
+    </div>
+
+    <p>UnboundApex(이하 "개발자")가 개발·제공하는 <strong>Posty</strong>(이하 "앱")는 이용자의 개인정보를 소중히 여기며,
+    아래와 같이 개인정보를 처리합니다. 본 방침은 Google Play 스토어를 통해 배포되는 Posty 앱에 적용됩니다.</p>
+
+    <section>
+      <h2>1. 수집하는 개인정보</h2>
+      <p>앱은 이름, 이메일, 전화번호, 위치, 연락처, 기기 식별자 등 <strong>어떠한 개인정보도 수집하지 않습니다.</strong></p>
+      <p>이용자가 앱에 입력하는 할 일 내용·마감일·색상·완료 여부 등의 정보는 <strong>이용자 기기 내부 저장소에만
+      저장</strong>되며, 개발자를 포함한 외부의 누구에게도 전송·공유되지 않습니다.</p>
+    </section>
+
+    <section>
+      <h2>2. 데이터 저장 위치</h2>
+      <p>모든 데이터는 안드로이드 기기 내 로컬 저장소(Android DataStore)에만 보관됩니다. 별도의 계정 가입이 없으며,
+      클라우드 동기화·백업 서버·외부 데이터베이스를 사용하지 않습니다.</p>
+    </section>
+
+    <section>
+      <h2>3. 앱이 사용하는 권한</h2>
+      <p>앱은 다음 권한을 <strong>로컬 알림(리마인더) 기능</strong>을 위해서만 사용하며, 개인정보 수집과는 무관합니다.</p>
+      <ul>
+        <li><code>알림 표시</code> (POST_NOTIFICATIONS) — 마감 알림을 화면에 표시하기 위함</li>
+        <li><code>정확한 알람</code> (SCHEDULE_EXACT_ALARM) — 설정한 마감 시각에 정확히 알림을 울리기 위함</li>
+        <li><code>재부팅 후 실행</code> (RECEIVE_BOOT_COMPLETED) — 기기를 재시작해도 예약된 알림이 유지되도록 하기 위함</li>
+      </ul>
+      <p class="muted">앱에는 인터넷(<code>INTERNET</code>) 권한이 없어, 기술적으로도 데이터를 외부로 전송할 수 없습니다.</p>
+    </section>
+
+    <section>
+      <h2>4. 제3자 제공 및 외부 서비스</h2>
+      <p>앱은 광고, 분석(애널리틱스), 크래시 리포팅 등 어떠한 제3자 SDK나 외부 서비스도 포함하지 않습니다.
+      따라서 제3자에게 제공되거나 공유되는 개인정보가 없습니다.</p>
+    </section>
+
+    <section>
+      <h2>5. 데이터 보관 및 삭제</h2>
+      <p>데이터는 이용자 기기에만 존재합니다. 이용자는 앱 내에서 개별 할 일을 삭제할 수 있으며,
+      앱을 삭제(제거)하면 저장된 모든 데이터도 기기에서 함께 삭제됩니다.</p>
+    </section>
+
+    <section>
+      <h2>6. 아동의 개인정보</h2>
+      <p>앱은 개인정보를 수집하지 않으므로, 만 14세 미만 아동을 포함한 모든 이용자의 개인정보를 별도로 수집·처리하지 않습니다.</p>
+    </section>
+
+    <section>
+      <h2>7. 방침의 변경</h2>
+      <p>본 개인정보처리방침이 변경될 경우, 변경 내용을 본 페이지에 게시하고 상단의 "최종 업데이트" 날짜를 갱신합니다.</p>
+    </section>
+
+    <section>
+      <h2>8. 문의처</h2>
+      <p>개인정보처리방침에 관한 문의는 아래로 연락해 주세요.</p>
+      <p>개발자: UnboundApex<br />
+      이메일: <a href="mailto:qqyun15@naver.com">qqyun15@naver.com</a></p>
+    </section>
+
+    <!-- ================= English version ================= -->
+    <section class="en">
+      <h2>Privacy Policy (English)</h2>
+      <p><strong>In short —</strong> Posty does <strong>not collect or transmit any personal data.</strong>
+      All of your data (to‑do items, due dates, colors, completion status) is stored <strong>only on your device</strong>
+      and is never sent to any external server. The app does not even request internet access.</p>
+      <p><strong>Data collected:</strong> None. Posty does not collect names, emails, phone numbers, location,
+      contacts, or device identifiers.</p>
+      <p><strong>Storage:</strong> All data is kept in local on‑device storage (Android DataStore). There is no account,
+      no cloud sync, and no external database.</p>
+      <p><strong>Permissions:</strong> Notification, exact alarm, and boot‑completed permissions are used solely for
+      local reminder notifications and are unrelated to any data collection. The app has no <code>INTERNET</code>
+      permission, so it is technically unable to send data anywhere.</p>
+      <p><strong>Third parties:</strong> No advertising, analytics, or crash‑reporting SDKs are included. No data is
+      shared with any third party.</p>
+      <p><strong>Retention &amp; deletion:</strong> Data lives only on your device. You can delete individual items in
+      the app, and uninstalling the app removes all stored data.</p>
+      <p><strong>Children:</strong> As no personal data is collected, no data from children is processed.</p>
+      <p><strong>Contact:</strong> UnboundApex — <a href="mailto:qqyun15@naver.com">qqyun15@naver.com</a></p>
+    </section>
+
+    <footer>
+      <p>© 2026 UnboundApex · Posty</p>
+    </footer>
+  </div>
+</body>
+</html>
