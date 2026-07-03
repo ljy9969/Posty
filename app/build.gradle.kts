@@ -4,11 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.bimatrix.posty"
+    namespace = "com.unboundapex.posty"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.bimatrix.posty"
+        // Play 등록용 영구 식별자 — 개인 브랜드(UnboundApex). OctaLink(com.unboundapex.octalink)와 동일 규칙.
+        applicationId = "com.unboundapex.posty"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

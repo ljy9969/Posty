@@ -8,7 +8,7 @@ plugins {
 
 kotlin {
     android {
-        namespace = "com.bimatrix.posty.shared"
+        namespace = "com.unboundapex.posty.shared"
         compileSdk = 35
         minSdk = 26
     }
