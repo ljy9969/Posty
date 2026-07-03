@@ -22,5 +22,10 @@ iosApp/**/Info.plist
 **/DerivedData/
 .DS_Store
 
+# ── 서명 키 (절대 커밋 금지) ───────────────────────
+keystore.properties
+*.jks
+*.keystore
+
 # ── 기타 ───────────────────────────────────────────
 *.log
