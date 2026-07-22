@@ -9,7 +9,7 @@ plugins {
 kotlin {
     android {
         namespace = "com.unboundapex.posty.shared"
-        compileSdk = 35
+        compileSdk = 36
         minSdk = 26
     }
 

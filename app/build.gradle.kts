@@ -14,14 +14,14 @@ val keystoreProps = Properties().apply {
 
 android {
     namespace = "com.unboundapex.posty"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         // Play 등록용 영구 식별자 — 개인 브랜드(UnboundApex). OctaLink(com.unboundapex.octalink)와 동일 규칙.
         applicationId = "com.unboundapex.posty"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 1
+        targetSdk = 36
+        versionCode = 2
         versionName = "1.0.0"
         vectorDrawables { useSupportLibrary = true }
     }
