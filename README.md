@@ -75,11 +75,11 @@ Xcode 빌드 시 `project.yml`의 pre-build 스크립트가 자동으로
 ## App Group (앱 ↔ 위젯 데이터 공유)
 
 위젯이 앱의 할 일을 읽으려면 **App Group** 이 필요합니다.
-그룹 ID: `group.com.bimatrix.posty` (앱·위젯 엔타이틀먼트에 이미 포함).
+그룹 ID: `group.com.unboundapex.posty` (앱·위젯 엔타이틀먼트에 이미 포함).
 
 - 시뮬레이터/로컬 실행: Xcode 가 자동 서명으로 그룹 컨테이너를 만들어 줍니다.
 - 실기기: Apple 개발자 계정에서 App Group 을 등록하고, Xcode 에서 `iosApp` 과 `PostyWidget`
-  두 타깃 모두 **Signing & Capabilities → App Groups** 에 `group.com.bimatrix.posty` 를 켜세요.
+  두 타깃 모두 **Signing & Capabilities → App Groups** 에 `group.com.unboundapex.posty` 를 켜세요.
 - 엔타이틀먼트가 없으면 앱은 표준 저장소로 폴백해 **단독 동작**(위젯만 데이터를 못 읽음)합니다.
 
 ## 실기기 빌드/배포 (코드 서명)
@@ -115,7 +115,7 @@ iOS 는 Android 처럼 **"파일(APK) 하나 보내서 설치"가 안 됩니다.
 2. **서명 + 아카이브 + 업로드** — 현재 CI 는 `CODE_SIGNING_ALLOWED=NO` 로 *빌드 검증만* 합니다
    (배포용 `.ipa` 를 만들지 않음). 배포하려면 서명 인증서/프로비저닝 +
    `xcodebuild archive` → App Store Connect 업로드가 추가로 필요.
-3. (위젯/알림 유지) App Group `group.com.bimatrix.posty` 와 번들 ID `com.bimatrix.posty` 를
+3. (위젯/알림 유지) App Group `group.com.unboundapex.posty` 와 번들 ID `com.unboundapex.posty` 를
    본인 팀 계정에 등록.
 
 ### TestFlight 까지 자동화하려면

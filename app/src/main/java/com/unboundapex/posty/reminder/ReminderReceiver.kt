@@ -13,7 +13,7 @@ import com.unboundapex.posty.R
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val taskId = intent.getStringExtra(ReminderScheduler.EXTRA_TASK_ID) ?: return
-        val text = intent.getStringExtra(ReminderScheduler.EXTRA_TASK_TEXT) ?: "할 일"
+        val text = intent.getStringExtra(ReminderScheduler.EXTRA_TASK_TEXT) ?: "Task"
 
         ReminderScheduler.ensureChannel(context)
 
@@ -26,7 +26,7 @@ class ReminderReceiver : BroadcastReceiver() {
 
         val notification = NotificationCompat.Builder(context, ReminderScheduler.CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_stat_posty)
-            .setContentTitle("오늘 마감이에요 📌")
+            .setContentTitle("Due today 📌")
             .setContentText(text)
             .setStyle(NotificationCompat.BigTextStyle().bigText(text))
             .setAutoCancel(true)

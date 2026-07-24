@@ -169,7 +169,7 @@ fun FreeBoard(
 
         if (tasks.isEmpty()) {
             Text(
-                "+ 버튼으로 할 일을 붙이고,\n겹쳐 놓으면 한 묶음이 돼요.",
+                "Tap + to stick notes anywhere.\nOverlap them to make a stack.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Ink.copy(alpha = 0.5f),
                 textAlign = TextAlign.Center,
@@ -219,7 +219,7 @@ private fun AddButton(onClick: () -> Unit) {
             .clickableNoRipple(onClick),
         contentAlignment = Alignment.Center,
     ) {
-        Icon(Icons.Rounded.Add, "할 일 추가", tint = Color.White, modifier = Modifier.size(24.dp))
+        Icon(Icons.Rounded.Add, "Add task", tint = Color.White, modifier = Modifier.size(24.dp))
     }
 }
 
@@ -299,7 +299,7 @@ private fun UndoButton(enabled: Boolean, onClick: () -> Unit) {
             .then(if (enabled) Modifier.clickableNoRipple(onClick) else Modifier),
         contentAlignment = Alignment.Center,
     ) {
-        Icon(Icons.Rounded.Undo, "되돌리기", tint = tint, modifier = Modifier.size(22.dp))
+        Icon(Icons.Rounded.Undo, "Undo", tint = tint, modifier = Modifier.size(22.dp))
     }
 }
 
@@ -510,7 +510,7 @@ private fun NoteContent(
                             .clickable { onComplete() },
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(Icons.Rounded.Check, "완료", tint = MintDark, modifier = Modifier.size(20.dp))
+                        Icon(Icons.Rounded.Check, "Complete", tint = MintDark, modifier = Modifier.size(20.dp))
                     }
                 }
             }
@@ -518,7 +518,7 @@ private fun NoteContent(
         // 압정
         Icon(
             imageVector = if (task.pinned) Icons.Filled.PushPin else Icons.Outlined.PushPin,
-            contentDescription = "고정",
+            contentDescription = "Pin",
             tint = if (task.pinned) PinRedFree else Ink.copy(alpha = 0.3f),
             modifier = Modifier
                 .align(Alignment.TopEnd)
@@ -541,8 +541,8 @@ private fun StackChip(count: Int, onFlip: () -> Unit, modifier: Modifier = Modif
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(3.dp),
     ) {
-        Text("${count}장", color = Color.White, fontSize = 11.sp)
-        Icon(Icons.Rounded.SwapHoriz, "플립", tint = Color.White, modifier = Modifier.size(14.dp))
+        Text("×$count", color = Color.White, fontSize = 11.sp)
+        Icon(Icons.Rounded.SwapHoriz, "Flip", tint = Color.White, modifier = Modifier.size(14.dp))
     }
 }
 
@@ -558,7 +558,7 @@ private fun UngroupChip(onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(3.dp),
     ) {
-        Icon(Icons.Rounded.CallSplit, "해제", tint = PinRedFree, modifier = Modifier.size(13.dp))
-        Text("해제", color = PinRedFree, fontSize = 11.sp)
+        Icon(Icons.Rounded.CallSplit, "Split", tint = PinRedFree, modifier = Modifier.size(13.dp))
+        Text("Split", color = PinRedFree, fontSize = 11.sp)
     }
 }

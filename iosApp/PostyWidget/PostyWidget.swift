@@ -2,7 +2,7 @@ import WidgetKit
 import SwiftUI
 
 // Kotlin 앱이 App Group 공유 UserDefaults 에 저장한 tasks_json 을 읽어 보여준다.
-private let appGroup = "group.com.bimatrix.posty"
+private let appGroup = "group.com.unboundapex.posty"
 private let cream = Color(red: 1.0, green: 0.992, blue: 0.969)
 private let mintDark = Color(red: 0.169, green: 0.702, blue: 0.667)
 private let ink = Color(red: 0.227, green: 0.227, blue: 0.227)
@@ -70,19 +70,19 @@ private func dueLabel(_ millis: Int64?) -> String? {
     let today = local.startOfDay(for: Date())
     let days = local.dateComponents([.day], from: today, to: local.startOfDay(for: dueLocal)).day ?? 0
     switch days {
-    case 0: return "오늘 마감"
-    case 1: return "내일 마감"
+    case 0: return "Due today"
+    case 1: return "Due tomorrow"
     case let d where d > 1: return "D-\(d)"
-    case -1: return "어제 지남"
-    default: return "\(-days)일 지남"
+    case -1: return "1 day overdue"
+    default: return "\(-days) days overdue"
     }
 }
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> PostyEntry {
         PostyEntry(date: Date(), items: [
-            WItem(id: "1", text: "오늘의 할 일", due: nil, colorIndex: 1),
-            WItem(id: "2", text: "다음 할 일", due: "D-2", colorIndex: 2),
+            WItem(id: "1", text: "Today's task", due: nil, colorIndex: 1),
+            WItem(id: "2", text: "Next task", due: "D-2", colorIndex: 2),
         ], total: 3)
     }
     func getSnapshot(in context: Context, completion: @escaping (PostyEntry) -> Void) {
@@ -130,7 +130,7 @@ private struct EmptyView2: View {
         VStack(spacing: 6) {
             Brand()
             Spacer()
-            Text("할 일이 없어요 :)").font(.subheadline).foregroundColor(.secondary)
+            Text("All clear :)").font(.subheadline).foregroundColor(.secondary)
             Spacer()
         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
     }
@@ -166,7 +166,7 @@ struct PostyWidgetEntryView: View {
             Text(top.text).font(.system(size: 17, weight: .semibold)).foregroundColor(ink).lineLimit(3)
             if let due = top.due { Text(due).font(.caption).foregroundColor(mintDark) }
             Spacer(minLength: 2)
-            if entry.total > 1 { Text("외 \(entry.total - 1)장 더").font(.caption2).foregroundColor(.secondary) }
+            if entry.total > 1 { Text("+\(entry.total - 1) more").font(.caption2).foregroundColor(.secondary) }
         }
     }
 
@@ -177,7 +177,7 @@ struct PostyWidgetEntryView: View {
             Text(top.text).font(.system(size: 18, weight: .semibold)).foregroundColor(ink).lineLimit(2)
             if let due = top.due { Text(due).font(.caption).foregroundColor(mintDark) }
             Spacer(minLength: 2)
-            if entry.total > 1 { Text("외 \(entry.total - 1)장 더").font(.caption2).foregroundColor(.secondary) }
+            if entry.total > 1 { Text("+\(entry.total - 1) more").font(.caption2).foregroundColor(.secondary) }
         }
     }
 
@@ -187,11 +187,11 @@ struct PostyWidgetEntryView: View {
             HStack {
                 Brand()
                 Spacer()
-                Text("\(entry.total)장").font(.caption2).foregroundColor(.secondary)
+                Text("\(entry.total) notes").font(.caption2).foregroundColor(.secondary)
             }
             ForEach(shown) { Row(item: $0) }
             if entry.total > shown.count {
-                Text("외 \(entry.total - shown.count)장 더").font(.caption2).foregroundColor(.secondary)
+                Text("+\(entry.total - shown.count) more").font(.caption2).foregroundColor(.secondary)
             }
             Spacer(minLength: 0)
         }
@@ -218,7 +218,7 @@ struct PostyWidget: Widget {
             PostyWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Posty")
-        .description("우선순위 할 일을 한눈에")
+        .description("Your top tasks at a glance")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

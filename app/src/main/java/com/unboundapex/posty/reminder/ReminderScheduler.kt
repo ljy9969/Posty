@@ -25,9 +25,9 @@ object ReminderScheduler {
         if (manager.getNotificationChannel(CHANNEL_ID) == null) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "마감 알림",
+                "Due reminders",
                 NotificationManager.IMPORTANCE_HIGH,
-            ).apply { description = "할 일 마감일 당일 아침 알림" }
+            ).apply { description = "Morning reminder on the day a task is due" }
             manager.createNotificationChannel(channel)
         }
     }

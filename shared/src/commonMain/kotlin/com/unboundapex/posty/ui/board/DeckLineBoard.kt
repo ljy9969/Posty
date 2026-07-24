@@ -217,7 +217,7 @@ fun DeckLineBoard(
                     listState = listState,
                 )
                 Text(
-                    text = "빈 곳을 두 번 톡 하면 덱으로 모여요",
+                    text = "Double-tap empty space to stack into a deck",
                     style = MaterialTheme.typography.labelMedium,
                     color = InkSoft,
                     modifier = Modifier

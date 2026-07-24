@@ -102,7 +102,7 @@ fun DeckBoard(
             }
         }
         Text(
-            text = "${tasks.size}장 · 빈 곳을 두 번 톡 하면 펼쳐져요",
+            text = "${tasks.size} notes · Double-tap empty space to spread",
             style = MaterialTheme.typography.labelMedium,
             color = InkSoft,
             modifier = Modifier
@@ -201,14 +201,14 @@ private fun DeckCardVisual(
                             .clickable { onComplete() },
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(Icons.Rounded.Check, "완료", tint = MintDark, modifier = Modifier.size(30.dp))
+                        Icon(Icons.Rounded.Check, "Complete", tint = MintDark, modifier = Modifier.size(30.dp))
                     }
                 }
             }
         }
         Icon(
             imageVector = if (task.pinned) Icons.Filled.PushPin else Icons.Outlined.PushPin,
-            contentDescription = if (task.pinned) "고정 해제" else "고정",
+            contentDescription = if (task.pinned) "Unpin" else "Pin",
             tint = if (task.pinned) PinRedDeck else Ink.copy(alpha = 0.32f),
             modifier = Modifier
                 .align(Alignment.TopCenter)

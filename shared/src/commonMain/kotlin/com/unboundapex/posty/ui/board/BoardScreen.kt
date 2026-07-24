@@ -206,16 +206,16 @@ private fun BoardHeader(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f)) {
-            Text("오늘의 보드", style = MaterialTheme.typography.headlineSmall, color = Ink)
+            Text("Today's Board", style = MaterialTheme.typography.headlineSmall, color = Ink)
             Text(
-                if (activeCount == 0) "할 일이 없어요. 한숨 돌리세요 :)" else "남은 할 일 $activeCount 장",
+                if (activeCount == 0) "All clear. Take a breather :)" else "$activeCount notes to go",
                 style = MaterialTheme.typography.labelSmall,
                 color = InkSoft,
             )
         }
         // 보드 모드 전환 (라인 ↔ 자유) — 민트 칩
         Text(
-            text = if (freeMode) "자유" else "라인",
+            text = if (freeMode) "Free" else "Line",
             color = MintDark,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier
@@ -236,7 +236,7 @@ private fun BoardHeader(
         ) {
             Icon(Icons.Rounded.CheckCircle, null, tint = Lavender, modifier = Modifier.size(18.dp))
             Spacer(Modifier.width(6.dp))
-            Text("완료 $completedCount", color = Lavender, fontWeight = FontWeight.SemiBold)
+            Text("Done $completedCount", color = Lavender, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -248,7 +248,7 @@ private fun EmptyBoard(modifier: Modifier) {
             Text("📝", style = MaterialTheme.typography.headlineSmall)
             Spacer(Modifier.height(8.dp))
             Text(
-                "+ 버튼으로 할 일을 한 장씩 붙여보세요.\n작게 쪼갤수록 가벼워져요.",
+                "Tap + to stick one note per task.\nSmaller pieces feel lighter.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = InkSoft,
                 textAlign = TextAlign.Center,
@@ -404,10 +404,10 @@ private fun AddPillButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
             .padding(horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(Icons.Rounded.Add, "할 일 추가", tint = Color.White, modifier = Modifier.size(20.dp))
+        Icon(Icons.Rounded.Add, "Add task", tint = Color.White, modifier = Modifier.size(20.dp))
         Spacer(Modifier.width(6.dp))
         Text(
-            "추가",
+            "Add",
             color = Color.White,
             style = MaterialTheme.typography.labelMedium,
             fontWeight = FontWeight.SemiBold,
@@ -436,7 +436,7 @@ private fun DueSortButton(active: Boolean, onClick: () -> Unit, modifier: Modifi
         Icon(Icons.Rounded.Schedule, null, tint = iconTint, modifier = Modifier.size(18.dp))
         Spacer(Modifier.width(6.dp))
         Text(
-            if (active) "원래대로" else "마감순",
+            if (active) "My order" else "By due",
             color = textColor,
             style = MaterialTheme.typography.labelMedium,
             fontWeight = FontWeight.SemiBold,
@@ -462,12 +462,12 @@ internal fun ZoomControl(
         Box(
             Modifier.size(36.dp).clip(CircleShape).clickableNoRipple(onZoomOut),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Rounded.Remove, "축소", tint = MintDark, modifier = Modifier.size(20.dp)) }
+        ) { Icon(Icons.Rounded.Remove, "Zoom out", tint = MintDark, modifier = Modifier.size(20.dp)) }
         Text("${(zoom * 100).roundToInt()}%", color = InkSoft, style = MaterialTheme.typography.labelSmall)
         Box(
             Modifier.size(36.dp).clip(CircleShape).clickableNoRipple(onZoomIn),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Rounded.Add, "확대", tint = MintDark, modifier = Modifier.size(20.dp)) }
+        ) { Icon(Icons.Rounded.Add, "Zoom in", tint = MintDark, modifier = Modifier.size(20.dp)) }
     }
 }
 

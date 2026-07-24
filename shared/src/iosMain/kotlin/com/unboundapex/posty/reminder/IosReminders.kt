@@ -56,7 +56,7 @@ class IosReminders : TaskSideEffects {
         fire.minute = 0
 
         val content = UNMutableNotificationContent()
-        content.setTitle("오늘 마감이에요 📌")
+        content.setTitle("Due today 📌")
         content.setBody(task.text)
 
         val trigger = UNCalendarNotificationTrigger.triggerWithDateMatchingComponents(fire, repeats = false)

@@ -19,18 +19,20 @@ fun formatShort(millis: Long): String {
     return "${d.monthNumber}/${d.dayOfMonth}"
 }
 
-private val KOR_DOW = arrayOf("월", "화", "수", "목", "금", "토", "일")
+private val DOW = arrayOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
-/** "6/25 (목)" 형태의 짧은 날짜 + 요일. */
+private val MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+/** "6/25 (Thu)" 형태의 짧은 날짜 + 요일. */
 fun formatShortDow(millis: Long): String {
     val d = toLocalDate(millis)
-    return "${d.monthNumber}/${d.dayOfMonth} (${KOR_DOW[d.dayOfWeek.isoDayNumber - 1]})"
+    return "${d.monthNumber}/${d.dayOfMonth} (${DOW[d.dayOfWeek.isoDayNumber - 1]})"
 }
 
-/** "2026. 6. 25." 형태의 전체 날짜. */
+/** "Jun 25, 2026" 형태의 전체 날짜. */
 fun formatFull(millis: Long): String {
     val d = toLocalDate(millis)
-    return "${d.year}. ${d.monthNumber}. ${d.dayOfMonth}."
+    return "${MONTHS[d.monthNumber - 1]} ${d.dayOfMonth}, ${d.year}"
 }
 
 /** 마감까지 남은 일수. 음수면 지났음, 0이면 오늘. null 이면 마감 없음. */
@@ -40,14 +42,14 @@ fun daysUntilDue(dueMillis: Long?): Long? {
     return today.daysUntil(toLocalDate(dueMillis)).toLong()
 }
 
-/** 마감 D-day 라벨. ("오늘", "내일", "D-3", "3일 지남") */
+/** 마감 D-day 라벨. ("Due today", "Due tomorrow", "D-3", "3 days overdue") */
 fun dueLabel(dueMillis: Long?): String? {
     val days = daysUntilDue(dueMillis) ?: return null
     return when {
-        days == 0L -> "오늘 마감"
-        days == 1L -> "내일 마감"
+        days == 0L -> "Due today"
+        days == 1L -> "Due tomorrow"
         days > 1L -> "D-$days"
-        days == -1L -> "어제 지남"
-        else -> "${-days}일 지남"
+        days == -1L -> "1 day overdue"
+        else -> "${-days} days overdue"
     }
 }

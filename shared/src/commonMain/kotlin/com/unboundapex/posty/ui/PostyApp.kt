@@ -99,8 +99,8 @@ private fun PostyApp(vm: PostyViewModel) {
                 snackbarHostState.currentSnackbarData?.dismiss()
             }
             val result = snackbarHostState.showSnackbar(
-                message = "할 일을 삭제했어요",
-                actionLabel = "실행취소",
+                message = "Task deleted",
+                actionLabel = "Undo",
                 duration = SnackbarDuration.Indefinite,
             )
             timeout.cancel()

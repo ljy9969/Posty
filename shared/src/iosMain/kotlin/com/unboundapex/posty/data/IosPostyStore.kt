@@ -14,7 +14,7 @@ class IosPostyStore : PostyStore {
     // 위젯(WidgetKit)과 데이터를 공유하기 위해 App Group suite 를 쓴다.
     // (엔타이틀먼트가 없으면 nil → 표준 defaults 로 폴백: 앱 단독으로는 정상 동작)
     private val defaults =
-        NSUserDefaults(suiteName = "group.com.bimatrix.posty") ?: NSUserDefaults.standardUserDefaults
+        NSUserDefaults(suiteName = "group.com.unboundapex.posty") ?: NSUserDefaults.standardUserDefaults
     private val mutex = Mutex()
 
     private val tasksKey = "tasks_json"

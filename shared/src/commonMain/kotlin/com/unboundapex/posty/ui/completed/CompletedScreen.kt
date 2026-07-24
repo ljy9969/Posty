@@ -83,10 +83,16 @@ private data class YM(val year: Int, val month: Int) {
 }
 
 /** 요일 이름 — dayOfWeek.value(월=1…일=7) - 1 로 색인. */
-private val DOW_NAME = arrayOf("월", "화", "수", "목", "금", "토", "일")
+private val DOW_NAME = arrayOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
 
 /** 달력 헤더 표시 순서 — 일요일 시작. */
-private val WEEK_HEADERS = arrayOf("일", "월", "화", "수", "목", "금", "토")
+private val WEEK_HEADERS = arrayOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+
+/** 월 이름(달력 타이틀용). */
+private val MONTH_NAME = arrayOf(
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+)
 
 private val SunRed = Color(0xFFE5604D)
 
@@ -122,18 +128,18 @@ fun CompletedScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Rounded.ArrowBack, "뒤로", tint = Ink)
+                Icon(Icons.AutoMirrored.Rounded.ArrowBack, "Back", tint = Ink)
             }
             Column {
-                Text("완료한 일", style = MaterialTheme.typography.headlineSmall, color = Ink)
-                Text("지금까지 ${tasks.size}장 클리어 🎉", style = MaterialTheme.typography.labelSmall, color = InkSoft)
+                Text("Completed", style = MaterialTheme.typography.headlineSmall, color = Ink)
+                Text("${tasks.size} notes cleared so far 🎉", style = MaterialTheme.typography.labelSmall, color = InkSoft)
             }
         }
 
         if (tasks.isEmpty()) {
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
-                    "아직 완료한 일이 없어요.\n한 장씩 클리어해 보세요!",
+                    "Nothing completed yet.\nClear them one note at a time!",
                     style = MaterialTheme.typography.bodyMedium,
                     color = InkSoft,
                     textAlign = TextAlign.Center,
@@ -199,23 +205,23 @@ private fun MonthHeader(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         IconButton(onClick = onPrev) {
-            Icon(Icons.AutoMirrored.Rounded.KeyboardArrowLeft, "이전 달", tint = Ink)
+            Icon(Icons.AutoMirrored.Rounded.KeyboardArrowLeft, "Previous month", tint = Ink)
         }
         Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                "${month.year}년 ${month.month}월",
+                "${MONTH_NAME[month.month - 1]} ${month.year}",
                 style = MaterialTheme.typography.titleLarge,
                 color = Ink,
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                if (monthCount > 0) "이 달 $monthCount 장 클리어" else "이 달엔 아직 없어요",
+                if (monthCount > 0) "$monthCount cleared this month" else "None yet this month",
                 style = MaterialTheme.typography.labelSmall,
                 color = if (monthCount > 0) MintDark else InkSoft,
             )
         }
         IconButton(onClick = onNext) {
-            Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, "다음 달", tint = Ink)
+            Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, "Next month", tint = Ink)
         }
     }
 }
@@ -340,7 +346,7 @@ private fun DayDetail(
     if (date == null) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(
-                "날짜를 탭하면 그날 완료한 일이 보여요.",
+                "Tap a date to see what you cleared that day.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = InkSoft,
                 textAlign = TextAlign.Center,
@@ -353,7 +359,7 @@ private fun DayDetail(
     if (dayTasks.isEmpty()) {
         Column(Modifier.fillMaxSize()) {
             Text(
-                "$label · 0장",
+                "$label · 0 notes",
                 style = MaterialTheme.typography.titleSmall,
                 color = Ink,
                 fontWeight = FontWeight.Bold,
@@ -361,7 +367,7 @@ private fun DayDetail(
             )
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
-                    "이 날 완료한 일이 없어요.",
+                    "Nothing completed on this day.",
                     style = MaterialTheme.typography.bodyMedium,
                     color = InkSoft,
                 )
@@ -377,7 +383,7 @@ private fun DayDetail(
     ) {
         item(key = "header") {
             Text(
-                "$label · ${dayTasks.size}장 클리어",
+                "$label · ${dayTasks.size} cleared",
                 style = MaterialTheme.typography.titleSmall,
                 color = Ink,
                 fontWeight = FontWeight.Bold,
@@ -410,17 +416,17 @@ private fun CompletedRow(task: Task, onRestore: () -> Unit, onDelete: () -> Unit
             )
             Spacer(Modifier.height(6.dp))
             Text(
-                "작성 ${formatShortDow(task.createdAt)}",
+                "Created ${formatShortDow(task.createdAt)}",
                 style = MaterialTheme.typography.labelSmall,
                 color = InkSoft,
                 fontSize = 11.sp,
             )
         }
         IconButton(onClick = onRestore) {
-            Icon(Icons.AutoMirrored.Rounded.Undo, "되돌리기", tint = MintDark, modifier = Modifier.size(20.dp))
+            Icon(Icons.AutoMirrored.Rounded.Undo, "Restore", tint = MintDark, modifier = Modifier.size(20.dp))
         }
         IconButton(onClick = onDelete) {
-            Icon(Icons.Rounded.DeleteOutline, "삭제", tint = SunRed, modifier = Modifier.size(20.dp))
+            Icon(Icons.Rounded.DeleteOutline, "Delete", tint = SunRed, modifier = Modifier.size(20.dp))
         }
     }
 }

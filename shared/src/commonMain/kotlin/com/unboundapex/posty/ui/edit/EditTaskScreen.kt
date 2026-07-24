@@ -85,12 +85,12 @@ fun EditTaskScreen(
         // 상단 바
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
             IconButton(onClick = onClose) {
-                Icon(Icons.Rounded.Close, "닫기", tint = Ink)
+                Icon(Icons.Rounded.Close, "Close", tint = Ink)
             }
             Spacer(Modifier.weight(1f))
             if (onDelete != null) {
                 IconButton(onClick = onDelete) {
-                    Icon(Icons.Rounded.DeleteOutline, "삭제", tint = Color(0xFFE5604D))
+                    Icon(Icons.Rounded.DeleteOutline, "Delete", tint = Color(0xFFE5604D))
                 }
             }
         }
@@ -111,7 +111,7 @@ fun EditTaskScreen(
                 value = text,
                 onValueChange = { text = it },
                 placeholder = {
-                    Text("할 일을 한 줄로 적어보세요", color = Ink.copy(alpha = 0.4f), fontSize = 20.sp)
+                    Text("Write your task in one line", color = Ink.copy(alpha = 0.4f), fontSize = 20.sp)
                 },
                 textStyle = MaterialTheme.typography.titleMedium.copy(fontSize = 20.sp, color = Ink),
                 colors = TextFieldDefaults.colors(
@@ -128,7 +128,7 @@ fun EditTaskScreen(
 
         Spacer(Modifier.height(20.dp))
 
-        Text("색상", style = MaterialTheme.typography.labelSmall, color = InkSoft)
+        Text("Color", style = MaterialTheme.typography.labelSmall, color = InkSoft)
         Spacer(Modifier.height(8.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             StickyPalette.forEachIndexed { i, _ ->
@@ -149,7 +149,7 @@ fun EditTaskScreen(
 
         Spacer(Modifier.height(20.dp))
 
-        Text("마감일", style = MaterialTheme.typography.labelSmall, color = InkSoft)
+        Text("Due date", style = MaterialTheme.typography.labelSmall, color = InkSoft)
         Spacer(Modifier.height(8.dp))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
@@ -164,14 +164,14 @@ fun EditTaskScreen(
                     Icon(Icons.Rounded.Event, null, tint = MintDark, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
                     Text(
-                        dueDate?.let { formatFull(it) } ?: "마감 없음",
+                        dueDate?.let { formatFull(it) } ?: "No due date",
                         color = if (dueDate != null) Ink else InkSoft,
                     )
                 }
             }
             if (dueDate != null) {
                 Spacer(Modifier.width(8.dp))
-                TextButton(onClick = { dueDate = null }) { Text("지우기", color = InkSoft) }
+                TextButton(onClick = { dueDate = null }) { Text("Clear", color = InkSoft) }
             }
         }
 
@@ -186,7 +186,7 @@ fun EditTaskScreen(
                 .fillMaxWidth()
                 .height(54.dp),
         ) {
-            Text(if (existing == null) "붙이기" else "저장", fontWeight = FontWeight.Bold, fontSize = 17.sp)
+            Text(if (existing == null) "Stick it" else "Save", fontWeight = FontWeight.Bold, fontSize = 17.sp)
         }
     }
 
@@ -198,10 +198,10 @@ fun EditTaskScreen(
                 TextButton(onClick = {
                     dueDate = state.selectedDateMillis
                     showPicker = false
-                }) { Text("확인", color = MintDark) }
+                }) { Text("OK", color = MintDark) }
             },
             dismissButton = {
-                TextButton(onClick = { showPicker = false }) { Text("취소", color = InkSoft) }
+                TextButton(onClick = { showPicker = false }) { Text("Cancel", color = InkSoft) }
             },
         ) {
             DatePicker(state = state)
